@@ -1,5 +1,6 @@
 import React,{useContext,createContext,useState} from "react";
 import {getData} from '../../biblioteca';
+import axios from "axios";
 
 const datosContexto = createContext();
 
@@ -9,7 +10,7 @@ const datosContexto = createContext();
 function Context(props) {
     const [user,setUser] = useState(objetoInicial);
     const [users,setUsers] = useState(listaInicial);
-    
+
 
     const getUsers= async (url)=>{
         const usersList = await getData(url);
@@ -17,7 +18,6 @@ function Context(props) {
     };
 
   
-
     const getUser = async (url) =>{
         const user = await getData(url);
         setUser(user);

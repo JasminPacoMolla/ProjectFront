@@ -9,18 +9,20 @@ import Signup from './Sign-up/Signup';
 import UserForm from './Components/Content/Users/UserForm';
 import IndexAdmin from './Components/Admin/IndexAdmin';
 import { IndexClient } from './Components/Content/IndexClient';
+import Petitions from './Components/Petitions';
 
 function App() {
   return (
     <React.Fragment>
-    <Routes>
+    {/* <Routes>
       <Route path='/' element={<IndexClient/>}/>
       <Route path='/User' element={<UserForm/>}/>
       <Route path='/admin' element={<IndexAdmin/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
     </Routes>
-    {/* <Users></Users> */}
+    <Users></Users> */}
+    <Petitions/>
     </React.Fragment>
  
 
