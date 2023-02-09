@@ -165,7 +165,7 @@ function Signup() {
                     className="text-blue-600 hover:text-blue-700 hover:underline"
                     title="Sign In"
                   >
-                    Login in here
+                    {" "}Login in here
                   </a>
                 </p>
                 <form className="my-8 text-sm">
@@ -220,7 +220,7 @@ function Signup() {
                     />
 
                     <label htmlFor="termsUp" className="text-gray-700">
-                      I accept the
+                      I accept the {" "}
                       <a
                         href="#"
                         className="text-blue-600 hover:text-blue-700 hover:underline"
@@ -232,7 +232,7 @@ function Signup() {
                         href="#"
                         className="text-blue-600 hover:text-blue-700 hover:underline"
                       >
-                        privacy policy
+                       {" "} privacy policy
                       </a>
                       <span>
                         <i className="fas fa-exclamation-circle failure-icon relative"></i>

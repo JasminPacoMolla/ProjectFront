@@ -6,7 +6,7 @@ function Footer() {
 
   return (
     <React.Fragment>
-        <footer className="footer bg-cover bg-no-repeat bg-right-top pt-120 mt-25 md:bg-transparent md:pt-260 lg:pt-260" style="background-image: url('assets/img/footer/footer-bg.svg');">
+        <footer className="footer bg-cover bg-no-repeat bg-right-top pt-120 mt-25 md:bg-transparent md:pt-260 lg:pt-260" style={{backgroundImage:('assets/img/footer/footer-bg.svg')}}>
                     <div className="container">
                         <div className="widget-wrapper">
                             <div className="row">
@@ -82,14 +82,7 @@ function Footer() {
         <a href="#" className="scroll-top btn-hover">
       <i className="lni lni-chevron-up"></i>
     </a>
-
-    <script src="./js/js-index/tiny-slider.js"></script>
-    <script src="./js/js-index/wow.min.js"></script>
-    <script src="./js/js-index/main.js"></script>
-
-            
-
-       
+   
 		
   </React.Fragment>
   );

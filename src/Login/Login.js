@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 function Login() {
+  
   const alpineTemplate = `  <div x-data="{ show: false }" class="relative flex items-center mt-2">
 <input :type=" show ? 'text': 'password' " name="passwordLogin" id="passwordLogin"
     class="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-indigo-600 rounded text-sm text-gray-900"
@@ -43,7 +44,7 @@ function Login() {
                     className="text-blue-600 hover:text-blue-700 hover:underline"
                     title="Sign In"
                   >
-                    Sign in here
+                    {" "}Sign in here
                   </a>
                 </p>
 
@@ -67,7 +68,7 @@ function Login() {
                   </div>
                   <div className="flex flex-col my-4">
                     <label htmlFor="passwordLogin" className="text-gray-700">
-                      Password{" "}
+                      Password
                       <span>
                         <i className="fas fa-exclamation-circle failure-icon"></i>
                         <i className="fas fa-check-circle success-icon"></i>
