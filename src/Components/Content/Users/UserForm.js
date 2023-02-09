@@ -129,11 +129,11 @@ const UserForm = ()=>{
                             ></i></span>
                         </label>
                         <select id="countriesUser" name="countriesUser" className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500">
-                        <option selected>Choose a country</option>
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Germany</option>
+                        <option value="">Choose a country</option>
+                        <option value="" >United States</option>
+                        <option value="" >Canada</option>
+                        <option value="" >France</option> 
+                        <option value="" >Germany</option>
                         </select>
                         <div className="error relative flex-col"></div>
                         </div>

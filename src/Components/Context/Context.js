@@ -15,7 +15,7 @@ function Context(props) {
         setUsers(usersList);
     }
     const getUser = async (url) =>{
-        let user = await getData(url);
+        const user = await getData(url);
         setUser(user);
     }
 
@@ -27,5 +27,6 @@ function Context(props) {
   );
   }
   
-  export default Context ;
+  export default Context;
+  export {datosContexto}
   

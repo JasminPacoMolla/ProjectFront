@@ -2,7 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{html,js}",
             "./src/Components/Header/Header.js",
-            'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+            "./src/Components/Footer/Footer.js",
+            'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+            "./public/index.html"
           ],
   theme: {
     extend: {},

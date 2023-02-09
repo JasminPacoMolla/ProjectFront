@@ -17,11 +17,14 @@ function App() {
     <React.Fragment>
     <Routes>
       <Route path='/' element={<IndexClient/>}/>
+      <Route path='/' element={<Footer/>}/>
       <Route path='/User' element={<UserForm/>}/>
       <Route path='/admin' element={<IndexAdmin/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
+     
     </Routes>
+  
 
 
 
