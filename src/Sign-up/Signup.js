@@ -1,151 +1,35 @@
-import React, { useContext } from "react";
+import React from "react";
+import {  useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 function Signup() {
-  const passwdTemplate = ` <div class="flex flex-col my-4">
-    <label for="passwordUp" class="text-gray-700"
-      >Password
-      <span
-        ><i
-          class="fas fa-exclamation-circle failure-icon relative"
-        ></i>
-        <i
-          class="fas fa-check-circle success-icon relative"
-        ></i></span
-    ></label>
-    <div
-      x-data="{ show: false }"
-      class="relative flex items-center mt-2"
-    >
-      <input
-        :type=" show ? 'text': 'password' "
-        name="passwordUp"
-        id="passwordUp"
-        class="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-indigo-600 rounded text-sm text-gray-900"
-        placeholder="Enter your password"
-        type="password"
-      />
+  const [show, setShow] = useState(false);
+  const [showRepeat, setShowRepeat] = useState(false);
 
-      <button
-        @click="show = !show"
-        type="button"
-        class="absolute right-2 bg-transparent flex items-center justify-center text-gray-700"
-      >
-        <svg
-          x-show="!show"
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-          ></path>
-        </svg>
+  //Hook de la api react-hook-form
+  //https://react-hook-form.com
+  const {register,handleSubmit, getValues, watch,formState: { errors }} = useForm({mode: "all",});
+  
 
-        <svg
-          x-show="show"
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          style="display: none"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          ></path>
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-          ></path>
-        </svg>
-      </button>
-    </div>
-    <div class="error relative flex-col"></div>
-  </div>
-    `;
+  var pass = "";
 
-  const confirmTemplate = ` <div class="flex flex-col my-4">
-    <label for="password-confirmationUp" class="text-gray-700"
-      >Confirm Password
-      <span>
-        <i
-          class="fas fa-exclamation-circle failure-icon relative"
-        ></i>
-        <i
-          class="fas fa-check-circle success-icon relative"
-        ></i></span
-    ></label>
-    <div
-      x-data="{ show: false }"
-      class="relative flex items-center mt-2"
-    >
-      <input
-        :type=" show ? 'text': 'password' "
-        name="password-confirmationUp"
-        id="password-confirmationUp"
-        class="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-indigo-600 rounded text-sm text-gray-900"
-        placeholder="Enter your password again"
-        type="password"
-      />
+  const onSubmit = (data) => {
+    pass= data.password
+    //Hacer aquí la inserción en la base de datos.
+    let datos = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      passwordConfirm: data.passwordConfirm,
+      terms: data.terms
+    
+    };
 
-      <button
-        @click="show = !show"
-        type="button"
-        class="absolute right-2 bg-transparent flex items-center justify-center text-gray-700"
-      >
-        <svg
-          x-show="!show"
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-          ></path>
-        </svg>
+    console.log(datos);
 
-        <svg
-          x-show="show"
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          style="display: none"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          ></path>
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-          ></path>
-        </svg>
-      </button>
-    </div>
-    <div class="error relative flex-col"></div>
-  </div>
-    `;
+    console.log(data.password);
+  };
+
 
   return (
     <React.Fragment>
@@ -161,16 +45,20 @@ function Signup() {
                 <p className="text-center text-sm text-gray-600 mt-2">
                   Already have an account?
                   <a
-                    href="login"
+                    href="/login"
                     className="text-blue-600 hover:text-blue-700 hover:underline"
                     title="Sign In"
                   >
-                    {" "}Login in here
+                    {" "}
+                    Login in here
                   </a>
                 </p>
-                <form className="my-8 text-sm">
+                <form
+                  className="my-8 text-sm"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <div className="flex flex-col my-4">
-                    <label htmlFor="nameUp" className="text-gray-700">
+                    <label htmlFor="name" className="text-gray-700">
                       Name
                       <span>
                         <i className="fas fa-exclamation-circle failure-icon"></i>
@@ -179,15 +67,22 @@ function Signup() {
                     </label>
                     <input
                       type="text"
-                      name="nameUp"
-                      id="nameUp"
+                      name="name"
+                      id="name"
                       className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-indigo-600 rounded text-sm text-gray-900"
                       placeholder="Enter your name"
+                      {...register("name", { required: true })}
+                      aria-invalid={errors.name ? "true" : "false"}
                     />
-                    <div className="error relative flex-col"></div>
+
+                    <div className="error relative flex-col">
+                      {errors.name && (
+                        <span role="alert">This field is required </span>
+                      )}
+                    </div>
                   </div>
                   <div className="flex flex-col my-4">
-                    <label htmlFor="emailUp" className="text-gray-700">
+                    <label htmlFor="email" className="text-gray-700">
                       Email Address
                       <span>
                         <i className="fas fa-exclamation-circle failure-icon relative"></i>
@@ -196,43 +91,166 @@ function Signup() {
                     </label>
                     <input
                       type="email"
-                      name="emailUp"
-                      id="emailUp"
+                      name="email"
+                      id="email"
                       className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-indigo-600 rounded text-sm text-gray-900"
                       placeholder="example@mail.com"
+                      {...register("email", { required: true })}
+                      aria-invalid={errors.email ? "true" : "false"}
                     />
-                    <div className="error relative flex-col"></div>
+                    <div className="error relative flex-col">
+                      {errors.email && (
+                        <span role="alert">This field is required </span>
+                      )}
+                    </div>
                   </div>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: passwdTemplate }}
-                  ></div>
+                  {/* <div dangerouslySetInnerHTML={{ __html: passwdTemplate }}></div> */}
+                  <div className="flex flex-col my-4">
+                    <label htmlFor="passwordUp" className="text-gray-700">
+                      Password
+                      <span>
+                        <i className="fas fa-exclamation-circle failure-icon relative"></i>
+                        <i className="fas fa-check-circle success-icon relative"></i>
+                      </span>
+                    </label>
+                    <div className="relative flex items-center mt-2">
+                      <input
+                        id="password"
+                        className="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-indigo-600 rounded text-sm text-gray-900"
+                        placeholder="Enter your password"
+                        type={show ? "text": "password"}
+                        {...register("password", {
+                          required: "Password is Required...",
+                          pattern: {
+                            value: /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                            message:
+                              "Password Must Contain: At least 6 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character",
+                          },
+                        })}
+                      />
+                      <button
+                        type="button"
+                        className="absolute right-3 bg-transparent flex items-center justify-center text-gray-600"
+                        onClick={() => setShow(!show)}
+                      >
+                        {show ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 576 512"
+                            width={20}
+                            color="red"
+                          >
+                            <path d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
+                          </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 512"
+                            width={20}
+                          >
+                            <path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z" />
+                          </svg>
+                        )}
+                      </button>{" "}
+                      
+                    </div>
 
-                  <div
-                    dangerouslySetInnerHTML={{ __html: confirmTemplate }}
-                  ></div>
+                    <div className="error relative flex-col">
+                      {errors.password && (
+                        <span role="alert">{errors.password.message}</span>
+                      )}
+                    </div>
+
+                    {/* {errors.password && (
+                        <p className="error relative flex-col"> {errors.password?.message} </p>
+                      )} */}
+                  </div>
+
+                  <div className="flex flex-col my-4">
+                    <label
+                      htmlFor="password-confirmation"
+                      className="text-gray-700"
+                    >
+                      Confirm Password
+                      <span>
+                        <i className="fas fa-exclamation-circle failure-icon relative"></i>
+                        <i className="fas fa-check-circle success-icon relative"></i>
+                      </span>
+                    </label>
+                    <div
+                      x-data="{ show: false }"
+                      className="relative flex items-center mt-2"
+                    >
+                      <input
+                        id="passwordConfirm"
+                        name="passwordConfirm"
+                        className="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-indigo-600 rounded text-sm text-gray-900"
+                        placeholder="Repeat password"
+                        type={showRepeat ? "text": "password"}
+                        {...register("passwordConfirm", {
+                          required: true,
+                          
+                        })}
+                      />
+                      <button
+                        type="button"
+                        className="absolute right-3 bg-transparent flex items-center justify-center text-gray-600"
+                        onClick={() => setShowRepeat(!showRepeat)}
+                        >
+                          {showRepeat ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 576 512"
+                              width={20}
+                              color="red"
+                            >
+                              <path d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 640 512"
+                              width={20}
+                            >
+                              <path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z" />
+                            </svg>
+                          )}
+                        </button>{" "}
+                    
+                    </div>
+                    <div className="error relative flex-col">
+                    {watch("passwordConfirm") !== watch("password") &&
+                    getValues("passwordConfirm") ? (
+                      <p>Password does not match</p>
+                      ) : null}
+                    </div>
+                  </div>
 
                   <div className="flex items-center">
                     <input
                       type="checkbox"
-                      name="termsUp"
-                      id="termsUp"
+                      name="terms"
+                      id="terms"
                       className="mr-2 focus:ring-0 rounded"
+                      {...register("terms", { required: true })}
+                      aria-invalid={errors.terms ? "true" : "false"}
                     />
 
-                    <label htmlFor="termsUp" className="text-gray-700">
-                      I accept the {" "}
+                    <label htmlFor="terms" className="text-gray-700">
+                      I accept the{" "}
                       <a
-                        href="#"
+                        href="/"
                         className="text-blue-600 hover:text-blue-700 hover:underline"
                       >
                         terms
                       </a>{" "}
                       and
                       <a
-                        href="#"
+                        href="/"
                         className="text-blue-600 hover:text-blue-700 hover:underline"
                       >
-                       {" "} privacy policy
+                        {" "}
+                        privacy policy
                       </a>
                       <span>
                         <i className="fas fa-exclamation-circle failure-icon relative"></i>
@@ -240,11 +258,15 @@ function Signup() {
                       </span>
                     </label>
                   </div>
-                  <div className="error relative flex-col"></div>
+                  <div className="error relative flex-col">
+                    {errors.terms && (
+                      <span role="alert">Terms must be accepted</span>
+                    )}
+                  </div>
                   <div className="my-4 flex items-center justify-end space-x-4">
                     <button
                       id="btn-signUp"
-                      type="button"
+                      type="submit"
                       className="bg-indigo-600 hover:bg-indigo-700 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase"
                     >
                       Sign Up
@@ -262,7 +284,7 @@ function Signup() {
 
                 <div className="text-sm">
                   <a
-                    href="#"
+                    href="/"
                     className="flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded"
                   >
                     <svg
@@ -295,7 +317,7 @@ function Signup() {
                     <span>Sign up with Google</span>
                   </a>
                   <a
-                    href="#"
+                    href="/"
                     className="flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded"
                   >
                     <svg
@@ -309,7 +331,7 @@ function Signup() {
                     <span>Sign up with GitHub</span>
                   </a>
                   <a
-                    href="#"
+                    href="/"
                     className="flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded"
                   >
                     <svg

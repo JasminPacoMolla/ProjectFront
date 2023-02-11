@@ -19,17 +19,17 @@ const IndexAdmin = ()=>{
                         <div id="dropdownAction" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
                                 <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reward</a>
+                                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reward</a>
                                 </li>
                                 <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Promote</a>
+                                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Promote</a>
                                 </li>
                                 <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Activate account</a>
+                                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Activate account</a>
                                 </li>
                             </ul>
                             <div className="py-1">
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete User</a>
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete User</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ const IndexAdmin = ()=>{
                             </td>
                             <td className="px-6 py-4">
                                 {/* <!-- Modal toggle --> */}
-                                <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                                <a href="/" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                             </td>
                         </tr>
                         {/* <!-- Fin One User --> */}
@@ -123,7 +123,7 @@ const IndexAdmin = ()=>{
                             </td>
                             <td className="px-6 py-4">
                                 {/* <!-- Modal toggle --> */}
-                                <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                                <a href="/" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                             </td>
                         </tr>
                         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-indigo-300 dark:hover:bg-gray-600">
@@ -150,7 +150,7 @@ const IndexAdmin = ()=>{
                             </td>
                             <td className="px-6 py-4">
                                 {/* <!-- Modal toggle --> */}
-                                <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                                <a href="/" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                             </td>
                         </tr>
                         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-indigo-300 dark:hover:bg-gray-600">
@@ -177,7 +177,7 @@ const IndexAdmin = ()=>{
                             </td>
                             <td className="px-6 py-4">
                                 {/* <!-- Modal toggle --> */}
-                                <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                                <a href="/" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                             </td>
                         </tr>
                         <tr className="bg-white border-b dark:bg-gray-800 hover:bg-indigo-300 dark:hover:bg-gray-600">
@@ -204,7 +204,7 @@ const IndexAdmin = ()=>{
                             </td>
                             <td className="px-6 py-4">
                                 {/* <!-- Modal toggle --> */}
-                                <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                                <a href="/" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                             </td>
                         </tr>
                         {/* <!-- One User --> */}
@@ -232,7 +232,7 @@ const IndexAdmin = ()=>{
                             </td>
                             <td className="px-6 py-4">
                                 {/* <!-- Modal toggle --> */}
-                                <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                                <a href="/" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                             </td>
                         </tr>
                         {/* <!-- Fin One User --> */}

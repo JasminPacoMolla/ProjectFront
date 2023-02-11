@@ -195,7 +195,7 @@ const UserForm = ()=>{
                                     required />
                             </div>
                             <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400">I agree with the
-                                <a href="#" className="text-indigo-600 hover:underline dark:text-indigo-500">terms and
+                                <a href="/" className="text-indigo-600 hover:underline dark:text-indigo-500">terms and
                                     conditions</a>.
                                     <span>
                                     <i
@@ -217,7 +217,7 @@ const UserForm = ()=>{
                     </form>
 
                     <p className="mt-5"> <a className="text-indigo-600 hover:underline"
-                            href="#" target="_blank">Data
+                            href="/" target="_blank">Data
                             Policy.</a>
                     </p>
                 </div>

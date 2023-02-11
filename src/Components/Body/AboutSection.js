@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { } from "react";
 import { useState, useEffect } from "react";
 function AboutSection() {
   const img1 = "";
@@ -42,7 +42,7 @@ function AboutSection() {
                   </p>
                 </div>
                 <a
-                  href="javascript:void(0)"
+                  href="/"
                   className="main-btn btn-hover border-btn "
                 >
                   Discover More

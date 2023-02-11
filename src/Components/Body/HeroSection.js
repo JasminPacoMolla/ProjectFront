@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {  } from "react";
 
 function HeroSection() {
   return (
@@ -21,7 +21,7 @@ function HeroSection() {
                   aliquyam erat, sed diam voluptua.
                 </p>
                 <a
-                  href="javascript:void(0)"
+                  href="/"
                   className="main-btn  btn-hover mb-2"
                 >
                   Get Started

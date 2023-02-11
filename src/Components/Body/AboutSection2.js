@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { } from "react";
 import { useState, useEffect } from "react";
 function AboutSection2() {
   const img1 = "";
@@ -31,7 +31,7 @@ function AboutSection2() {
 								<li>Easily to Manage</li>
 								<li>24/7 Support</li>
 							</ul>
-							<a href="javascript:void(0)" className="main-btn btn-hover border-btn ">Learn More</a>
+							<a href="/" className="main-btn btn-hover border-btn ">Learn More</a>
 						</div>
 					</div>
 					<div className="w-full lg:w-1/2 order-first lg:order-last">

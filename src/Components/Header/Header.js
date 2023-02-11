@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{} from "react";
 
 
 function Header() {
@@ -8,7 +8,7 @@ function Header() {
         <React.Fragment>
             <nav className=" bg-indigo-500 border-gray-200 px-2 sm:px-4 py-2.5 ">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
-            <a href="./index.html" className="flex items-center">
+            <a href="/" className="flex items-center">
                 <img src="./img/faviconLogoround.png" className="h-6 mr-3 sm:h-9" alt="MDcreations Logo" />
                 <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-800">MDcreations</span>
             </a>
@@ -27,10 +27,10 @@ function Header() {
                 </div>
                 <ul className="py-2" aria-labelledby="user-menu-button">
                     <li>
-                    <a href="userForm.html" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a>
+                    <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a>
                     </li>
                     <li>
-                    <a href="./index.html" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                    <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                     </li>
                 </ul>
                 </div>
@@ -42,16 +42,16 @@ function Header() {
             <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 bg-indigo-500" id="mobile-menu-2">
             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-zinc-300 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-indigo-500 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-indigo-100 md:bg-transparent md:text-indigo-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+                <a href="/" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-indigo-100 md:bg-transparent md:text-indigo-700 md:p-0 dark:text-white" aria-current="page">Home</a>
                 </li>
                 <li>
                 <a href="./userForm.html" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Profile</a>
                 </li>
                 <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Documents</a>
+                <a href="/" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Documents</a>
                 </li>
                 <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Delete Account</a>
+                <a href="/" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Delete Account</a>
                 </li>
             </ul>
             </div>

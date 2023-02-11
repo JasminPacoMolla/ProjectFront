@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { } from "react";
 import { useState, useEffect } from "react";
 
 function Pricing() {
@@ -59,7 +59,7 @@ function Pricing() {
 										</ul>
 									</div>
 									<div className="pricing-btn">
-										<a href="javascript:void(0)" className="main-btn btn-hover border-btn">Get Start</a>
+										<a href="/" className="main-btn btn-hover border-btn">Get Start</a>
 									</div>
 								</div>
 							</div>
@@ -79,7 +79,7 @@ function Pricing() {
 										</ul>
 									</div>
 									<div className="pricing-btn">
-										<a href="javascript:void(0)" className="main-btn btn-hover">Get Start</a>
+										<a href="/" className="main-btn btn-hover">Get Start</a>
 									</div>
 								</div>
 							</div>
@@ -99,7 +99,7 @@ function Pricing() {
 										</ul>
 									</div>
 									<div className="pricing-btn">
-										<a href="javascript:void(0)" className="main-btn btn-hover border-btn">Get Start</a>
+										<a href="/" className="main-btn btn-hover border-btn">Get Start</a>
 									</div>
 								</div>
 							</div>
@@ -123,7 +123,7 @@ function Pricing() {
 										</ul>
 									</div>
 									<div className="pricing-btn">
-										<a href="javascript:void(0)" className="main-btn btn-hover border-btn">Get Start</a>
+										<a href="/" className="main-btn btn-hover border-btn">Get Start</a>
 									</div>
 								</div>
 							</div>
@@ -143,7 +143,7 @@ function Pricing() {
 										</ul>
 									</div>
 									<div className="pricing-btn">
-										<a href="javascript:void(0)" className="main-btn btn-hover">Get Start</a>
+										<a href="/" className="main-btn btn-hover">Get Start</a>
 									</div>
 								</div>
 							</div>
@@ -163,7 +163,7 @@ function Pricing() {
 										</ul>
 									</div>
 									<div className="pricing-btn">
-										<a href="javascript:void(0)" className="main-btn btn-hover border-btn">Get Start</a>
+										<a href="/" className="main-btn btn-hover border-btn">Get Start</a>
 									</div>
 								</div>
 							</div>

@@ -1,19 +1,21 @@
 
 import axios from "axios";
 import React from "react";
+import { useState, useEffect } from "react";
+
 
 
 
 function Petitions(){
-    const baseURL = "https://jsonplaceholder.typicode.com/posts/5";
+    const baseURL = "https://jsonplaceholder.typicode.com/post";
 
-    const [post, setPost] = React.useState(null);
-    const [update, setUpdate] = React.useState(null);
+    const [post, setPost] = useState(null);
+    const [update, setUpdate] = useState(null);
 
 //Cómo hacer una solicitud GET
    
 
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get(`${baseURL}`).then((response) => {
           setPost(response.data);
         });
@@ -34,7 +36,7 @@ function Petitions(){
       };
 
       //PUT
-      function createPost() {
+      function createPost2() {
         axios
           .post(baseURL, {
             title: "Hello World!",
@@ -66,14 +68,14 @@ function Petitions(){
             
         <h1>{post.title}</h1>
         <p>{post.body}</p>
-        {/* <button onClick={createPost}>Create Post</button> */}
+        <button onClick={createPost}>Create Post</button>
       </div>
 
-      {/* <div>
+      <div>
         <h1>{post.title}</h1>
         <p>{post.body}</p>
       <button onClick={updatePost}>Update Post</button>
-       </div> */}
+       </div>
        </React.Fragment>
     );
 };
