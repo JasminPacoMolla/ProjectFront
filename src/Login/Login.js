@@ -1,8 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Route,Routes } from 'react-router-dom';
+import UserForm from '../Components/Content/Users/UserForm.js';
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-
+  const Navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [values, setValues] = useState({
     email: "",
@@ -12,6 +15,10 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     //Aquí mandar la petición al servidor
+    if(values.email !="" && values.password !="" ){
+      Navigate("/user");
+    }
+    
     console.log(values);
   };
 
