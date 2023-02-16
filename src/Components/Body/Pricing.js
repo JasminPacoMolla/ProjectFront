@@ -23,8 +23,8 @@ function Pricing() {
 				<div className="row flex justify-center">
 					<div className="w-full md:w-9/12 lg:w-8/12 xl:w-6/12">
 						<div className="section-title text-center mb-9">
-							<h1 className="mb-6 ">Choose a Plan</h1>
-							<p className="">Lorem ipsum dolor sit amet consetetur sadipscing elitr sswed diam nonumy eirmod tempor nvidunt.</p>
+							<h1 className="mb-6 text-4xl text-gray-800 font-bold">Choose a Plan</h1>
+							<p className="text-lg">Lorem ipsum dolor sit amet consetetur sadipscing elitr sswed diam nonumy eirmod tempor nvidunt.</p>
 						</div>
 					</div>
 				</div>
@@ -46,8 +46,8 @@ function Pricing() {
 							<div className="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
 								<div className="single-pricing mx-4">
 									<div className="pricing-header">
-										<h1 className="mb-8 text-theme-color">$36</h1>
-										<h3 className="package-name">Basic Account</h3>
+										<h1 className="mb-8 text-theme-color text-4xl font-bold">$36</h1>
+										<h3 className="package-name text-3xl text-gray-800 font-bold" >Basic Account</h3>
 									</div>
 									<div className="content mb-8 2xl:pl-13">
 										<ul className="pricing-feature">
@@ -66,8 +66,8 @@ function Pricing() {
 							<div className="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
 								<div className="single-pricing mx-4">
 									<div className="pricing-header">
-										<h1 className="mb-8 text-theme-color">$56</h1>
-										<h3 className="package-name">Standard Account</h3>
+										<h1 className="mb-8 text-theme-color text-4xl font-bold">$56</h1>
+										<h3 className="package-name text-3xl text-gray-800 font-bold">Standard Account</h3>
 									</div>
 									<div className="content mb-8 2xl:pl-13">
 										<ul className="pricing-feature">
@@ -86,8 +86,8 @@ function Pricing() {
 							<div className="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
 								<div className="single-pricing mx-4">
 									<div className="pricing-header">
-										<h1 className="mb-8 text-theme-color">$89</h1>
-										<h3 className="package-name">Premium Account</h3>
+										<h1 className="mb-8 text-theme-color text-4xl font-bold">$89</h1>
+										<h3 className="package-name text-3xl text-gray-800 font-bold">Premium Account</h3>
 									</div>
 									<div className="content mb-8 2xl:pl-13">
 										<ul className="pricing-feature">
