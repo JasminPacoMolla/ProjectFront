@@ -14,13 +14,16 @@ import Petitions from './Components/Petitions';
 function App() {
   return (
     <React.Fragment>
-    <Routes>
-      <Route path='/' element={<IndexClient/>}/>
-      <Route path='/User' element={<UserForm/>}/>
-      <Route path='/admin' element={<IndexAdmin/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/signup' element={<Signup/>}/>
-    </Routes>
+      <Context>
+        <Routes>
+          <Route path='/' element={<IndexClient/>}/>
+          <Route path='/user' element={<UserForm/>}/>
+          <Route path='/IndexAdmin' element={<IndexAdmin/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+        </Routes>
+      </Context>
+   
     {/* <Users></Users> */}
     {/* <Petitions/> */}
     </React.Fragment>

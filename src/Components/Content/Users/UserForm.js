@@ -1,11 +1,21 @@
 import React from "react";
 import Header from "../../Header/Header";
 import { useState } from "react";
+import { useContext } from "react";
+import { datosContexto } from "../../Context/Context";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const UserForm = () => {
   const [show, setShow] = useState(false);
   const [showRepeat, setShowRepeat] = useState(false);
+  const[error,setError]=useState(false);
+
+  var context = useContext(datosContexto);
+  const Navigate = useNavigate();
+
+  const url = `http://localhost/api/user/${context.userConnected.id}`
+
 
   //Hook de la api react-hook-form
   //https://react-hook-form.com
@@ -17,33 +27,55 @@ const UserForm = () => {
     formState: { errors },
   } = useForm({ mode: "all" });
 
-  const onSubmit = (data) => {
+  const onSubmit =async (data) => {
     //Hacer aquí la inserción en la base de datos.
     let datos = {
       name: data.name,
-      lastname: data.lastName,
       email: data.email,
-      phone: data.phone,
+      phoneNumber: data.phone,
       photo: data.photo,
       address: data.address,
       country: data.country,
-      rol: data.rol,
+      user_type: data.rol,
       password: data.password,
-      passwordConfirm: data.passwordConfirm,
-      terms: data.terms,
+      password_confirmation: data.password_confirmation,
+      termsAcceptation: data.terms,
     };
+    const response = await context.updateUser(url,datos);
+    if(response.status == 200){
+      if(context.userConnected.user_type =="admin"){
+        Navigate('/IndexAdmin');
+      }
+      else{
+        Navigate('/');
+      }
+     }else{
+        setError(true)
+     }
 
     console.log(datos);
   };
-
+  
+  const submitDelete=async()=>{
+    const response = await context.deleteUser(url);
+    console.log(response)
+    if(response.status == 200){
+      Navigate('/login')
+     }
+  }
   return (
     <React.Fragment>
       <Header />
+      {/* <div className="estado">
+          <p>Valor del estado actual.</p>
+          <pre>{JSON.stringify(context.userConnected, null, 3)}</pre>
+          <pre>{JSON.stringify(context.loggedIn, null, 3)}</pre>
+        </div> */}
       <div className="max-w-2xl mx-auto bg-white p-16">
         <h2 className="mb-5 font-medium text-heading-color">
           Welcome{" "}
           <span id="userOnForm" className="font-normal text-theme-color">
-            User name here
+            {context.userConnected.name}
           </span>
         </h2>
         <p className="mb-5">
@@ -56,10 +88,10 @@ const UserForm = () => {
             {/* <!-- Input First Name --> */}
             <div>
               <label
-                htmlFor="first-nameUser"
+                htmlFor="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
-                First name
+                Name
                 <span>
                   <i className="fas fa-exclamation-circle failure-icon"></i>
                   <i className="fas fa-check-circle success-icon"></i>
@@ -71,6 +103,7 @@ const UserForm = () => {
                 name="name"
                 className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                 placeholder="John"
+                defaultValue={context.userConnected.name}
                 {...register("name", { required: true })}
                 aria-invalid={errors.name ? "true" : "false"}
               />
@@ -82,7 +115,7 @@ const UserForm = () => {
             </div>
 
             {/* <!-- Input Last Name --> */}
-            <div>
+            {/* <div>
               <label
                 htmlFor="last-nameUser"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -107,12 +140,12 @@ const UserForm = () => {
                         <span role="alert">This field is required</span>
                       )}
               </div>
-            </div>
+            </div> */}
           </div>
           {/* <!-- Input email --> */}
           <div className="mb-6">
             <label
-              htmlFor="emailUser"
+              htmlFor="email"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Email address{" "}
@@ -125,6 +158,7 @@ const UserForm = () => {
               type="email"
               id="email"
               name="email"
+              defaultValue={context.userConnected.email}
               className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
               placeholder="john.doe@country.com"
               {...register("email", {
@@ -149,7 +183,7 @@ const UserForm = () => {
             {/* <!-- Input phone number --> */}
             <div>
               <label
-                htmlFor="phone"
+                htmlFor="phoneNumber"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Phone number
@@ -160,8 +194,9 @@ const UserForm = () => {
               </label>
               <input
                 type="tel"
-                id="phone"
-                name="phone"
+                id="phoneNumber"
+                name="phoneNumber"
+                defaultValue={context.userConnected.phoneNumber}
                 className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                 placeholder="123 456 678"
                 pattern=""
@@ -231,6 +266,7 @@ const UserForm = () => {
               type="text"
               id="address"
               name="address"
+              defaultValue={context.userConnected.address}
               className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
               placeholder="Av HalfDome 27"
               {...register("address", { required: false })}
@@ -274,7 +310,7 @@ const UserForm = () => {
             {/* <!-- Input rol select --> */}
             <div>
               <label
-                htmlFor="rol"
+                htmlFor="user_type"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Select an option
@@ -283,16 +319,18 @@ const UserForm = () => {
                   <i className="fas fa-check-circle success-icon"></i>
                 </span>
               </label>
-              <select
-                id="rol"
-                name="rol"
+              <input
+                id="user_type"
+                name="user_type"
+                defaultValue={context.userConnected.user_type}
                 className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-                {...register("rol")}
-              >
-                <option selected>Choose an User rol</option>
+                {...register("user_type")}
+              />
+                {/* <option selected>Choose an User rol</option>
                 <option value="Premium" >Premium</option>
+                <option value="Premium" >Admin</option>
                 <option value="Basic" >Basic</option>
-              </select>
+              </select> */}
               <div className="error relative flex-col"></div>
             </div>
           </div>
@@ -358,7 +396,7 @@ const UserForm = () => {
           {/* <!-- Input password repeat --> */}
           <div className="mb-6 relative ">
             <label
-              htmlFor="passwordConfirm"
+              htmlFor="password_confirmation"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Confirm password
@@ -369,11 +407,11 @@ const UserForm = () => {
             </label>
             <input
               type={showRepeat ? "text" : "password"}
-              id="passwordConfirm"
-              name="passwordConfirm"
+              id="password_confirmation"
+              name="password_confirmation"
               className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
               placeholder="•••••••••"
-              {...register("passwordConfirm", {
+              {...register("password_confirmation", {
                 required: true,
               })}
             
@@ -404,8 +442,8 @@ const UserForm = () => {
                         )}
              </button>{" "}
             <div className="error relative flex-col">
-            {watch("passwordConfirm") !== watch("password") &&
-                      getValues("passwordConfirm") ? (
+            {watch("password_confirmation") !== watch("password") &&
+                      getValues("password_confirmation") ? (
                         <p>Password does not match</p>
                       ) : null}
             </div>
@@ -413,12 +451,12 @@ const UserForm = () => {
           <div className="flex items-start mb-6">
             <div className="flex items-center h-5">
               <input
-                id="termsUser"
+                id="termsAcceptation"
                 type="checkbox"
                 value=""
                 className="w-4 h-4 border border-gray-300 rounded bg-indigo-100 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-600 dark:ring-offset-gray-800"
-                {...register("terms", { required: true })}
-                aria-invalid={errors.terms ? "true" : "false"}
+                {...register("termsAcceptation", { required: true })}
+                aria-invalid={errors.termsAcceptation ? "true" : "false"}
               />
             </div>
             <label
@@ -430,7 +468,7 @@ const UserForm = () => {
                 href="/"
                 className="text-indigo-600 hover:underline dark:text-indigo-500"
               >
-                terms and conditions
+                 Terms and Conditions
               </a>
               .
               <span>
@@ -438,7 +476,7 @@ const UserForm = () => {
                 <i className="fas fa-check-circle success-icon"></i>
               </span>
               <div className="error relative flex-col">
-              {errors.terms && (
+              {errors.termsAcceptation && (
                       <span role="alert">Terms must be accepted</span>
                     )}
               </div>
@@ -450,16 +488,19 @@ const UserForm = () => {
             id="btn-resetUser"
             className="text-white bg-indigo-700 hover:bg-indigo-800 shadow-indigo-800/80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 dark:shadow-purple-800/80"
           >
-            Reset my Profile
+           Save my Profile
           </button>
-
-          <button
-            type="submit"
+                   {error ?
+                     <p className="text-red-700 p-5">Something is wrong, please try again!</p>
+                      : null
+                  }
+          <a
+            onClick={()=>{submitDelete()}}
             id="btn-deleteUser"
             className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
           >
             Delete my Account
-          </button>
+          </a>
         </form>
 
         <p className="mt-5">

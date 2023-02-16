@@ -1,5 +1,7 @@
 import React from 'react';
 import IndexHeader from '../Header/IndexHeader';
+import Header from '../Header/Header';
+
 import HeroSection from '../Body/HeroSection';
 import FeatureSection from '../Body/FeatureSection';
 import AboutSection from '../Body/AboutSection';
@@ -12,7 +14,8 @@ export const IndexClient = () => {
   return (
 
     <React.Fragment>
-        <IndexHeader/>
+        <IndexHeader />
+        {/* <Header/> */}
         <HeroSection/>
         <FeatureSection/>
         <AboutSection/>

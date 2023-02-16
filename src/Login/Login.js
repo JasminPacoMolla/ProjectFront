@@ -1,25 +1,36 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { Route,Routes } from 'react-router-dom';
 import UserForm from '../Components/Content/Users/UserForm.js';
 import { useNavigate } from "react-router-dom";
-
+import { datosContexto } from "../Components/Context/Context";
+import {postData} from '../biblioteca'
 function Login() {
+  const url = "http://localhost/api/login" 
   const Navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const[error,setError]=useState(false);
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+  var context = useContext(datosContexto);
 
-  const handleSubmit = (event) => {
+
+
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
     //Aquí mandar la petición al servidor
-    if(values.email !="" && values.password !="" ){
-      Navigate("/user");
+    const pathApi = await context.login(url,values);
+
+    console.log(context.userConnected)
+    if(values.email !="" && values.password !="" && pathApi !== undefined ){
+      Navigate(pathApi.path);
     }
-    
-    console.log(values);
+    else{
+      setError(true);
+    }
   };
 
   function handleChange(evt) {
@@ -124,7 +135,7 @@ function Login() {
                     </div>
                     <div className="error relative flex-col"></div>
                   </div>
-                  <div className="my-4 flex items-center justify-end space-x-4">
+                  <div className="my-4 flex items-center justify-between space-x-4">
                     <button
                       type="submit"
                       id="btn-login"
@@ -132,6 +143,13 @@ function Login() {
                     >
                       Login
                     </button>
+                    {error ?
+                     <p className="text-red-700 p-5">One of your credentials is wrong, please try again!</p>
+                      : null
+                  
+                  
+                  }
+
                   </div>
                   <div className="my-4 flex items-center justify-end space-x-4">
                     <a

@@ -1,12 +1,26 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
+import { datosContexto } from "../Components/Context/Context";
 import { useForm } from "react-hook-form";
+import {postData} from '../biblioteca'
+import { useNavigate } from "react-router-dom";
+
+
 
 function Signup() {
   const [show, setShow] = useState(false);
   const [showRepeat, setShowRepeat] = useState(false);
+  const [formData, setFormData] = useState({});
+  const[error,setError]=useState(false);
+
+  const Navigate = useNavigate();
+
+  const url = "http://localhost/api/signup";
+
+  var context = useContext(datosContexto);
 
   //Hook de la api react-hook-form
+
   //https://react-hook-form.com
   const {
     register,
@@ -16,22 +30,26 @@ function Signup() {
     formState: { errors },
   } = useForm({ mode: "all" });
 
+ 
 
-
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
   
     //Hacer aquí la inserción en la base de datos.
-    let datos = {
+     var datos = {
       name: data.name,
       email: data.email,
       password: data.password,
-      passwordConfirm: data.passwordConfirm,
-      terms: data.terms,
+      password_confirmation : data.password_confirmation,
+      termsAcceptation: data.termsAcceptation,
     };
+    const response = await context.signup(url,datos);
+    if(response.status == 200){
+      Navigate('/login');
 
-    console.log(datos);
+    }else{
+      setError(true)
+    }
 
-    console.log(data.password);
   };
 
   return (
@@ -170,7 +188,7 @@ function Signup() {
 
                   <div className="flex flex-col my-4">
                     <label
-                      htmlFor="password-confirmation"
+                      htmlFor="password_confirmation"
                       className="text-gray-700"
                     >
                       Confirm Password
@@ -184,12 +202,12 @@ function Signup() {
                       className="relative flex items-center mt-2"
                     >
                       <input
-                        id="passwordConfirm"
-                        name="passwordConfirm"
+                        id="password_confirmation"
+                        name="password_confirmation"
                         className="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-indigo-600 rounded text-sm text-gray-900"
                         placeholder="Repeat password"
                         type={showRepeat ? "text" : "password"}
-                        {...register("passwordConfirm", {
+                        {...register("password_confirmation", {
                           required: true,
                         })}
                       />
@@ -219,8 +237,8 @@ function Signup() {
                       </button>{" "}
                     </div>
                     <div className="error relative flex-col">
-                      {watch("passwordConfirm") !== watch("password") &&
-                      getValues("passwordConfirm") ? (
+                      {watch("password_confirmation") !== watch("password") &&
+                      getValues("password_confirmation") ? (
                         <p>Password does not match</p>
                       ) : null}
                     </div>
@@ -229,14 +247,14 @@ function Signup() {
                   <div className="flex items-center">
                     <input
                       type="checkbox"
-                      name="terms"
-                      id="terms"
+                      name="termsAcceptation"
+                      id="termsAcceptation"
                       className="mr-2 focus:ring-0 rounded"
-                      {...register("terms", { required: true })}
-                      aria-invalid={errors.terms ? "true" : "false"}
+                      {...register("termsAcceptation", { required: true })}
+                      aria-invalid={errors.termsAcceptation ? "true" : "false"}
                     />
 
-                    <label htmlFor="terms" className="text-gray-700">
+                    <label htmlFor="termsAcceptation" className="text-gray-700">
                       I accept the{" "}
                       <a
                         href="/"
@@ -259,18 +277,23 @@ function Signup() {
                     </label>
                   </div>
                   <div className="error relative flex-col">
-                    {errors.terms && (
+                    {errors.termsAcceptation && (
                       <span role="alert">Terms must be accepted</span>
                     )}
                   </div>
-                  <div className="my-4 flex items-center justify-end space-x-4">
+                  <div className="my-4 flex items-center justify-between space-x-4">
                     <button
+                      // onClick={()=>{signup(url,formData); console.log(formData)}}
                       id="btn-signUp"
                       type="submit"
                       className="bg-indigo-600 hover:bg-indigo-700 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase"
                     >
                       Sign Up
                     </button>
+                    {error ?
+                     <p className="text-red-700 p-5">One of your credentials is wrong, please try again!</p>
+                      : null
+                  }
                   </div>
                 </form>
 
