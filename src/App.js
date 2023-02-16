@@ -9,7 +9,6 @@ import Signup from './Sign-up/Signup';
 import UserForm from './Components/Content/Users/UserForm';
 import IndexAdmin from './Components/Admin/IndexAdmin';
 import { IndexClient } from './Components/Content/IndexClient';
-import Petitions from './Components/Petitions';
 
 function App() {
   return (
@@ -24,8 +23,7 @@ function App() {
         </Routes>
       </Context>
    
-    {/* <Users></Users> */}
-    {/* <Petitions/> */}
+   
     </React.Fragment>
  
 

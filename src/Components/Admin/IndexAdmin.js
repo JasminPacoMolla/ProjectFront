@@ -1,11 +1,10 @@
 import React from "react";
 import Header from "../Header/Header";
 import {  useState,useContext } from "react";
-import {postData,getData,putData,deleteData} from '../../biblioteca'
+import {getData} from '../../biblioteca'
 import { useEffect } from "react";
 import EditUser from "./EditUser";
 import RowUser from "./RowUser";
-import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { datosContexto } from "../Context/Context";
@@ -30,7 +29,7 @@ const IndexAdmin = ()=>{
             try{
                 const response = await getData(url);
                 context.updateListState(response.data)
-                 return response.data;
+                return response.data;
             }
             catch(error){
                 console.log(error);
@@ -39,49 +38,15 @@ const IndexAdmin = ()=>{
             }
         };
         const response = fetchData();
-      
-       
      },[]);
-
-     
-
-    
-    const {
-        register,
-        handleSubmit,
-        getValues,
-        watch,
-        formState: { errors },
-    } = useForm({ mode: "all" });
-        
-      
-      const onSubmit = (data) => {
-        //Hacer aquí la inserción en la base de datos.
-        let datos = {
-          name: data.name,
-          lastname: data.lastName,
-          email: data.email,
-          phone: data.phone,
-          photo: data.photo,
-          address: data.address,
-          country: data.country,
-          rol: data.rol,
-          password: data.password,
-          password_confirmation: data.password_confirmation,
-          termsAcceptationAcceptation: data.terms,
-        };
-        console.log(datos);
-      };
-
-
 
     return(
         <React.Fragment>
             <Header />
             {error ?
-                     <p className="text-red-700 p-5">Something wrong is going on, please try again!</p>
-                      : null
-                  }
+                <p className="text-red-700 p-5">Something wrong is going on, please try again!</p>
+                : null
+            }
             <div className="shadow-md sm:rounded-lg m-10">
                 <div className="flex items-center justify-between py-4 bg-white dark:bg-gray-800">
                     <div className="ml-10">

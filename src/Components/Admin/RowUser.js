@@ -1,8 +1,7 @@
 import React from 'react'
 import {  useState,useContext } from "react";
 import { datosContexto } from "../Context/Context";
-import EditUser from './EditUser';
-import { useForm } from "react-hook-form";
+
 
 
 
@@ -12,43 +11,7 @@ export const RowUser = (props) => {
    // console.log(context.users)
    const [showRepeat, setShowRepeat] = useState(false);
    const [showModal, setShowModal] = useState(props.show);
-
-   const url = "http://localhost/api/user/"
- 
- 
-   //Hook de la api react-hook-form
-   //https://react-hook-form.com
-   const {
-     register,
-     handleSubmit,
-     getValues,
-     watch,
-     formState: { errors },
-   } = useForm({ mode: "all" });
-    var showState = false;
-   const updateUser = async(url)=>{
-     
-   }
-   const onSubmit = (data) => {
-     //Hacer aquí la inserción en la base de datos.
-     let datos = {
-       name: data.name,
-       lastname: data.lastName,
-       email: data.email,
-       phone: data.phone,
-       photo: data.photo,
-       address: data.address,
-       country: data.country,
-       rol: data.rol,
-       password: data.password,
-       password_confirmation: data.password_confirmation,
-       termsAcceptationAcceptation: data.terms,
-     };
- 
-     console.log(datos);
-   };
-
-
+  
 
   return (
     <React.Fragment>

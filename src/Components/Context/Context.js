@@ -126,7 +126,6 @@ function Context(props) {
 
 
     const updateUserState=(object)=>{
-       // console.log(object)
         setUser(object);
     }
     const updateListState=(list)=>{

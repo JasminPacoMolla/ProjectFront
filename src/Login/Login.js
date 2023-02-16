@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { datosContexto } from "../Components/Context/Context";
 import {postData} from '../biblioteca'
 function Login() {
+
   const url = "http://localhost/api/login" 
   const Navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -17,14 +18,10 @@ function Login() {
   var context = useContext(datosContexto);
 
 
-
-
   const handleSubmit = async(event) => {
     event.preventDefault();
     //Aquí mandar la petición al servidor
     const pathApi = await context.login(url,values);
-
-    console.log(context.userConnected)
     if(values.email !="" && values.password !="" && pathApi !== undefined ){
       Navigate(pathApi.path);
     }

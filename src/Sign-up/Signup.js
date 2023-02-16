@@ -1,8 +1,7 @@
 import React from "react";
-import { useEffect, useState,useContext } from "react";
+import {useState,useContext } from "react";
 import { datosContexto } from "../Components/Context/Context";
 import { useForm } from "react-hook-form";
-import {postData} from '../biblioteca'
 import { useNavigate } from "react-router-dom";
 
 

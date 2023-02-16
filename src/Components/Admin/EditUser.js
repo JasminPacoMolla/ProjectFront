@@ -8,19 +8,15 @@ export const EditUser = (props) => {
     var context = useContext(datosContexto);
     const Navigate = useNavigate();
 
-const [show, setShow] = useState(false);
-const [showRepeat, setShowRepeat] = useState(false);
-const[error,setError]=useState(false);
+    const[error,setError]=useState(false);
 
-
-
-const {
-    register,
-    handleSubmit,
-    getValues,
-    watch,
-    formState: { errors },
-  } = useForm({ mode: "all" });
+    const {
+        register,
+        handleSubmit,
+        getValues,
+        watch,
+        formState: { errors },
+      } = useForm({ mode: "all" });
     
     const url = `http://localhost/api/user/${context.user.id}` ;
       const onSubmit =async (data) => {
@@ -36,7 +32,6 @@ const {
           user_type: data.rol,
         };
         const response = await context.updateUser(url,datos);
-       
         if(response.status == 200){
          context.setShowModal(!context.showModal);
          Navigate('/IndexAdmin')
@@ -134,7 +129,7 @@ const {
                     <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number
 
                     </label>
-                    <input type="tel" name="phone" id="phone" className="shadow-sm bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" placeholder="123-456-678"
+                    <input type="tel" name="phone" defaultValue={context.user.phoneNumber} id="phone" className="shadow-sm bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" placeholder="123-456-678"
                       {...register("phone", {
                         required: false,
                         pattern: {
@@ -183,7 +178,7 @@ const {
                     <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Address
 
                     </label>
-                    <input type="text" id="address" name="address"
+                    <input type="text" id="address" name="address" defaultValue={context.user.address}
                       className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                       placeholder=""
                       {...register("address", { required: false })}

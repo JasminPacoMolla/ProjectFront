@@ -10,14 +10,10 @@ function IndexHeader() {
 
   var context = useContext(datosContexto);
   const [show, setShow] = useState(false);
-  const[error,setError]=useState(false);
 
   const Navigate = useNavigate();
 
   const url = "http://localhost/api/logout" ;
-
-
-
 
   const submitLogout =async()=>{
     const response = await context.logout(url);
@@ -27,6 +23,7 @@ function IndexHeader() {
         alert("Something is wrong,please try again!!");
     }
 }
+
   return (
     <React.Fragment>
       <header className="header">
