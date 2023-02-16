@@ -14,7 +14,7 @@ function FeatureSection() {
 					<div className="w-full md:w-8/12 lg:w-4/12">
 						<div className="text-center px-3 2xl:px-10 py-8">
 							<div className="feature-icon">
-							<i class="fa-solid fa-language"></i>
+							<i className="fa-solid fa-language"></i>
 							</div>
 							<div className="content">
 								<h3 className="mb-5 text-3xl text-gray-800 font-bold" >Language</h3>

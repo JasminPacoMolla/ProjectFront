@@ -41,8 +41,8 @@ const UserForm = () => {
       termsAcceptation: data.terms,
     };
     const response = await context.updateUser(url, datos);
-    if (response.status == 200) {
-      if (context.userConnected.user_type == "admin") {
+    if (response.status === 200) {
+      if (context.userConnected.user_type === "admin") {
         Navigate("/IndexAdmin");
       } else {
         Navigate("/");
@@ -50,14 +50,12 @@ const UserForm = () => {
     } else {
       setError(true);
     }
-
-    console.log(datos);
   };
 
   const submitDelete = async () => {
     const response = await context.deleteUser(url);
     console.log(response);
-    if (response.status == 200) {
+    if (response.status === 200) {
       Navigate("/login");
     }
   };
@@ -77,18 +75,14 @@ const UserForm = () => {
         </p>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           {/* <!-- Name and Last Name --> */}
-          <div className="grid gap-6 mb-6 lg:grid-cols-2">
+          
             {/* <!-- Input First Name --> */}
-            <div>
+            <div className="mb-6" >
               <label
                 htmlFor="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Name
-                <span>
-                  <i className="fas fa-exclamation-circle failure-icon"></i>
-                  <i className="fas fa-check-circle success-icon"></i>
-                </span>
               </label>
               <input
                 type="text"
@@ -106,7 +100,7 @@ const UserForm = () => {
                 )}
               </div>
             </div>
-          </div>
+         
           {/* <!-- Input email --> */}
           <div className="mb-6">
             <label
@@ -114,10 +108,7 @@ const UserForm = () => {
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Email address{" "}
-              <span>
-                <i className="fas fa-exclamation-circle failure-icon"></i>
-                <i className="fas fa-check-circle success-icon"></i>
-              </span>
+              
             </label>
             <input
               type="email"
@@ -236,7 +227,7 @@ const UserForm = () => {
               )}
             </div>
           </div>
-          <div className="grid gap-6 mb-6 lg:grid-cols-2">
+        
             {/* <!-- Input country select --> */}
             <div>
               <label
@@ -244,10 +235,7 @@ const UserForm = () => {
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Select an option
-                <span>
-                  <i className="fas fa-exclamation-circle failure-icon"></i>
-                  <i className="fas fa-check-circle success-icon"></i>
-                </span>
+                
               </label>
               <select
                 id="country"
@@ -265,29 +253,7 @@ const UserForm = () => {
               </select>
               <div className="error relative flex-col"></div>
             </div>
-            {/* <!-- Input rol select --> */}
-            <div>
-              <label
-                htmlFor="user_type"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Select an option
-                <span>
-                  <i className="fas fa-exclamation-circle failure-icon"></i>
-                  <i className="fas fa-check-circle success-icon"></i>
-                </span>
-              </label>
-              <input
-                id="user_type"
-                name="user_type"
-                defaultValue={context.userConnected.user_type}
-                className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-                {...register("user_type")}
-              />
-             
-              <div className="error relative flex-col"></div>
-            </div>
-          </div>
+           
           {/* <!-- Input password --> */}
           <div className="mb-6 relative">
             <label
@@ -455,7 +421,7 @@ const UserForm = () => {
           <button
             type="submit"
             id="btn-resetUser"
-            className="text-white bg-indigo-700 hover:bg-indigo-800 shadow-indigo-800/80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 dark:shadow-purple-800/80"
+            className="text-white bg-indigo-700 hover:bg-indigo-800 shadow-indigo-800/80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 dark:shadow-purple-800/80 m-2"
           >
             Save my Profile
           </button>
@@ -464,15 +430,15 @@ const UserForm = () => {
               Something is wrong, please try again!
             </p>
           ) : null}
-          <a
+          <button
             onClick={() => {
               submitDelete();
             }}
             id="btn-deleteUser"
-            className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+            className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 m-2"
           >
             Delete my Account
-          </a>
+          </button>
         </form>
 
         <p className="mt-5">

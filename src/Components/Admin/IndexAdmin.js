@@ -5,20 +5,18 @@ import {getData} from '../../biblioteca'
 import { useEffect } from "react";
 import EditUser from "./EditUser";
 import RowUser from "./RowUser";
-import { useNavigate } from "react-router-dom";
+
 
 import { datosContexto } from "../Context/Context";
 
 
 const IndexAdmin = ()=>{
-        
-    const [show, setShow] = useState(false);
-    const [showRepeat, setShowRepeat] = useState(false);
+    
     const[error,setError]=useState(false);
 
 
     var context = useContext(datosContexto);
-    const Navigate = useNavigate();
+    
 
 
     const url = "http://localhost/api/user" ;
@@ -32,12 +30,11 @@ const IndexAdmin = ()=>{
                 return response.data;
             }
             catch(error){
-                console.log(error);
                 setError(true)
                 return error;
             }
         };
-        const response = fetchData();
+         fetchData();
      },[]);
 
     return(
@@ -114,18 +111,12 @@ const IndexAdmin = ()=>{
                         }
                         {/* <!-- ========================= Fin de bloque dinámico ========================= --> */}
 
-
                     </tbody>
                 </table>
 
                 <EditUser/>
-
       </div>
-
-
-{/* 
-<EditUser/> */}
-                               
+                       
         </React.Fragment>
     );
 }

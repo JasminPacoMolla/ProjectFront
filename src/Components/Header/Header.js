@@ -1,5 +1,6 @@
 import React,{} from "react";
-import logo from "../../img/faviconLogoround.png"
+import logo from "../../img/faviconLogoround.png";
+import user from "../../img/user.svg";
 import { useContext,useState } from "react";
 import { Link } from "react-router-dom";
 import { datosContexto } from "../Context/Context";
@@ -12,13 +13,13 @@ function Header() {
 
     var context = useContext(datosContexto);
     const [show, setShow] = useState(false);
-    const[error,setError]=useState(false);
+    
 
     const Navigate = useNavigate();
 
     const submitLogout =async()=>{
         const response = await context.logout(url);
-        if(response.status == 200){
+        if(response.status === 200){
             Navigate('/login')
         }else{
             alert("Something is wrong,please try again!!");
@@ -41,7 +42,7 @@ function Header() {
             <div className="flex items-center md:order-2">
                 <button  onClick={()=>{setShow(!show)}} type="button" className="flex mr-3 text-sm bg-g rounded-full md:mr-0 focus:ring-2 focus:ring-green-300 dark:focus:ring-zinc-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                 <span className="sr-only">Open user menu</span>
-                <img id="userPhoto" className="w-8 h-8 rounded-full" src="./img/user.svg" alt="user photo" />
+                <img id="userPhoto" className="w-8 h-8 rounded-full" src={user} alt="user" />
                 </button>
                 {/* <!-- Dropdown menu user --> */}
                 {show ?
@@ -72,7 +73,7 @@ function Header() {
             <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 bg-indigo-500" id="mobile-menu-2">
             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-zinc-300 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-indigo-500 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
-                <Link to={context.userConnected.user_type == "admin" ? "/IndexAdmin" : "/"} className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-indigo-100 md:bg-transparent md:text-indigo-700 md:p-0 dark:text-white" aria-current="page">{context.userConnected.user_type == "admin" ? "Home client" : "Home"}   </Link>
+                <Link to={context.userConnected.user_type === "admin" ? "/IndexAdmin" : "/"} className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-indigo-100 md:bg-transparent md:text-indigo-700 md:p-0 dark:text-white" aria-current="page">{context.userConnected.user_type == "admin" ? "Home client" : "Home"}   </Link>
                 </li>
                 <li>
                 <Link to="/user" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Profile</Link>
@@ -85,8 +86,6 @@ function Header() {
             </div>
             </div>
         </nav>
-
-
         </React.Fragment>
     );
 

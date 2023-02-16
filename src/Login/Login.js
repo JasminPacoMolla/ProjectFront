@@ -18,9 +18,9 @@ function Login() {
     //Aquí mandar la petición al servidor
     const pathApi = await context.login(url, values);
     if (
-      values.email != "" &&
-      values.password != "" &&
-      pathApi.path != undefined
+      values.email !== "" &&
+      values.password !== "" &&
+      pathApi.path !== undefined
     ) {
       Navigate(pathApi.path);
     } else {

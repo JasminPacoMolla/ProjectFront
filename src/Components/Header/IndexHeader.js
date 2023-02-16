@@ -18,7 +18,7 @@ function IndexHeader() {
 
   const submitLogout =async()=>{
     const response = await context.logout(url);
-    if(response.status == 200){
+    if(response.status === 200){
         Navigate('/')
     }else{
         alert("Something is wrong,please try again!!");

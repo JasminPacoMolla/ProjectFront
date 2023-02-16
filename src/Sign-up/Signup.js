@@ -36,7 +36,7 @@ function Signup() {
       termsAcceptation: data.termsAcceptation,
     };
     const response = await context.signup(url, datos);
-    if (response.status == 200) {
+    if (response.status === 200) {
       Navigate("/login");
     } else {
       setError(true);

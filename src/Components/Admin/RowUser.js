@@ -1,5 +1,5 @@
 import React from 'react'
-import {  useState,useContext } from "react";
+import {useContext } from "react";
 import { datosContexto } from "../Context/Context";
 
 
@@ -8,9 +8,6 @@ import { datosContexto } from "../Context/Context";
 export const RowUser = (props) => {
     var context = useContext(datosContexto);
 
-   // console.log(context.users)
-   const [showRepeat, setShowRepeat] = useState(false);
-   const [showModal, setShowModal] = useState(props.show);
   
 
   return (
@@ -23,7 +20,7 @@ export const RowUser = (props) => {
                                 </div>
                             </td>
                             <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img className="w-10 h-10 rounded-full" src="./img/user.svg" alt="Jese image" />
+                                <img className="w-10 h-10 rounded-full" src="./img/user.svg" alt="Jese" />
                                 <div className="pl-3">
                                     <div className="text-base font-semibold">{props.data.name}</div>
                                     <div className="font-normal text-gray-500">{props.data.email}</div>
