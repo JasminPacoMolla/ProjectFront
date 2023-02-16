@@ -1,21 +1,6 @@
 import React, { } from "react";
-import { useState, useEffect } from "react";
-
 function Pricing() {
-  const img1 = "";
-  const img2 = "";
-  const img3 = "";
-
-  const [about, setImage1] = useState(img1);
-  const [aboutRight, setImage2] = useState(img2);
-  const [aboutDots, setImage3] = useState(img3);
-
-  useEffect(() => {
-    setImage1(require("../../img/about/about-2.png"));
-    setImage2(require("../../img/about/about-right-shape.svg"));
-    setImage3(require("../../img/about/right-dots.svg"));
-  }, []);
-
+ 
   return (
     <React.Fragment>
       <section id="pricing" className="pricing-section relative z-10 pt-120 pb-120">
