@@ -2,9 +2,6 @@ import React from 'react'
 import {useContext } from "react";
 import { datosContexto } from "../Context/Context";
 
-
-
-
 export const RowUser = (props) => {
     var context = useContext(datosContexto);
 
@@ -47,8 +44,6 @@ export const RowUser = (props) => {
                                 >
                                 EditUser
                                 </button>
-                                
-      
                             </td>
          </tr>
     </React.Fragment>

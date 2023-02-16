@@ -227,7 +227,7 @@ const UserForm = () => {
               )}
             </div>
           </div>
-        
+          <div className="grid gap-6 mb-6 lg:grid-cols-2">
             {/* <!-- Input country select --> */}
             <div>
               <label
@@ -253,6 +253,28 @@ const UserForm = () => {
               </select>
               <div className="error relative flex-col"></div>
             </div>
+             {/* <!-- Input rol select --> */}
+             <div>
+              <label
+                htmlFor="user_type"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Select an option
+                <span>
+                  <i className="fas fa-exclamation-circle failure-icon"></i>
+                  <i className="fas fa-check-circle success-icon"></i>
+                </span>
+              </label>
+              <input
+                id="user_type"
+                name="user_type"
+                defaultValue={context.userConnected.user_type}
+                className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+                {...register("user_type")}
+              />
+               <div className="error relative flex-col"></div>
+            </div>
+          </div>
            
           {/* <!-- Input password --> */}
           <div className="mb-6 relative">

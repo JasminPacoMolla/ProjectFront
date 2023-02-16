@@ -23,7 +23,7 @@ function HeroSection() {
                   aliquyam erat, sed diam voluptua.
                 </p>
                 <a
-                  href="/"
+                  href="/login"
                   className="main-btn  btn-hover mb-2"
                 >
                   Get Started
