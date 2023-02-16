@@ -1,16 +1,13 @@
 import React from "react";
-import {useState,useContext } from "react";
+import { useState, useContext } from "react";
 import { datosContexto } from "../Components/Context/Context";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-
-
 function Signup() {
   const [show, setShow] = useState(false);
   const [showRepeat, setShowRepeat] = useState(false);
-  const [formData, setFormData] = useState({});
-  const[error,setError]=useState(false);
+  const [error, setError] = useState(false);
 
   const Navigate = useNavigate();
 
@@ -29,26 +26,21 @@ function Signup() {
     formState: { errors },
   } = useForm({ mode: "all" });
 
- 
-
-  const onSubmit = async(data) => {
-  
+  const onSubmit = async (data) => {
     //Hacer aquí la inserción en la base de datos.
-     var datos = {
+    var datos = {
       name: data.name,
       email: data.email,
       password: data.password,
-      password_confirmation : data.password_confirmation,
+      password_confirmation: data.password_confirmation,
       termsAcceptation: data.termsAcceptation,
     };
-    const response = await context.signup(url,datos);
-    if(response.status == 200){
-      Navigate('/login');
-
-    }else{
-      setError(true)
+    const response = await context.signup(url, datos);
+    if (response.status == 200) {
+      Navigate("/login");
+    } else {
+      setError(true);
     }
-
   };
 
   return (
@@ -142,7 +134,8 @@ function Signup() {
                         {...register("password", {
                           required: "Password is Required...",
                           pattern: {
-                            value: /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                            value:
+                              /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
                             message:
                               "Password Must Contain: At least 6 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character",
                           },
@@ -282,17 +275,17 @@ function Signup() {
                   </div>
                   <div className="my-4 flex items-center justify-between space-x-4">
                     <button
-                      // onClick={()=>{signup(url,formData); console.log(formData)}}
                       id="btn-signUp"
                       type="submit"
                       className="bg-indigo-600 hover:bg-indigo-700 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase"
                     >
                       Sign Up
                     </button>
-                    {error ?
-                     <p className="text-red-700 p-5">One of your credentials is wrong, please try again!</p>
-                      : null
-                  }
+                    {error ? (
+                      <p className="text-red-700 p-5">
+                        One of your credentials is wrong, please try again!
+                      </p>
+                    ) : null}
                   </div>
                 </form>
 

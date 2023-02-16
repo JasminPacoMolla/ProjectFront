@@ -1,37 +1,29 @@
 import React from "react";
-import { useEffect, useState,useContext } from "react";
-import { Route,Routes } from 'react-router-dom';
-import UserForm from '../Components/Content/Users/UserForm.js';
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { datosContexto } from "../Components/Context/Context";
-import {postData} from '../biblioteca'
 function Login() {
-
-  const url = "http://localhost/api/login" 
+  const url = "http://localhost/api/login";
   const Navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const[error,setError]=useState(false);
+  const [error, setError] = useState(false);
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
   var context = useContext(datosContexto);
 
-
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     //Aquí mandar la petición al servidor
-    const pathApi = await context.login(url,values);
-<<<<<<< HEAD
-    if(values.email !="" && values.password !="" && pathApi !== undefined ){
-=======
-
-    console.log(context.userConnected)
-    if(values.email !=="" && values.password !=="" && pathApi !== undefined ){
->>>>>>> aa840be9a2c69c9b7f220de6211213981eceaae9
+    const pathApi = await context.login(url, values);
+    if (
+      values.email != "" &&
+      values.password != "" &&
+      pathApi.path != undefined
+    ) {
       Navigate(pathApi.path);
-    }
-    else{
+    } else {
       setError(true);
     }
   };
@@ -44,13 +36,12 @@ function Login() {
     const { target } = evt;
     const { name, value } = target;
     const newValues = {
-      ...values,[name]: value,
+      ...values,
+      [name]: value,
     };
     setValues(newValues);
-  
-  };
+  }
 
-  
   return (
     <React.Fragment>
       <div className="h-screen overflow-auto flex items-center justify-center">
@@ -109,9 +100,9 @@ function Login() {
                         value={values.password}
                         onChange={handleChange}
                         placeholder="Enter your password"
-                        type={show ? "text": "password"}
+                        type={show ? "text" : "password"}
                       />
-                       <button
+                      <button
                         type="button"
                         className="absolute right-3 bg-transparent flex items-center justify-center text-gray-600"
                         onClick={() => setShow(!show)}
@@ -146,13 +137,11 @@ function Login() {
                     >
                       Login
                     </button>
-                    {error ?
-                     <p className="text-red-700 p-5">One of your credentials is wrong, please try again!</p>
-                      : null
-                  
-                  
-                  }
-
+                    {error ? (
+                      <p className="text-red-700 p-5">
+                        One of your credentials is wrong, please try again!
+                      </p>
+                    ) : null}
                   </div>
                   <div className="my-4 flex items-center justify-end space-x-4">
                     <a
@@ -278,8 +267,6 @@ function Login() {
           </div>
         </div>
       </div>
-
-     
     </React.Fragment>
   );
 }
