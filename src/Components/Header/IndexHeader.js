@@ -3,6 +3,7 @@ import { useContext,useState } from "react";
 import { Link } from "react-router-dom";
 import { datosContexto } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
+import logo from "../../img/faviconLogoround.png";
 
 
 
@@ -35,7 +36,7 @@ function IndexHeader() {
                 <nav className=" flex items-center justify-between py-4 navbar navbar-expand-lg shadow-gray-100	 ">
                   <div className="container flex flex-wrap items-center justify-end mx-auto gap-10">
                     <a href="/" className="flex items-center shrink-1 w-8/12" >
-                        <img src="./img/faviconLogoround.png" className="h-6 mr-3 sm:h-9" alt="MDcreations Logo" />
+                        <img src={logo}  className="h-6 mr-3 sm:h-9" alt="MDcreations Logo" />
                         <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-800">MDcreations</span>
                     </a>
         

@@ -10,10 +10,12 @@ import Pricing from '../Body/Pricing';
 import Footer from '../Footer/Footer';
 
 
+
 export const IndexClient = () => {
   return (
 
     <React.Fragment>
+   
         <IndexHeader />
         {/* <Header/> */}
         <HeroSection/>

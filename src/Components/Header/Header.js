@@ -1,4 +1,8 @@
 import React,{} from "react";
+<<<<<<< HEAD
+=======
+import logo from "../../img/faviconLogoround.png"
+>>>>>>> aa840be9a2c69c9b7f220de6211213981eceaae9
 import { useContext,useState } from "react";
 import { Link } from "react-router-dom";
 import { datosContexto } from "../Context/Context";
@@ -32,7 +36,7 @@ function Header() {
             <nav className=" bg-indigo-500 border-gray-200 px-2 sm:px-4 py-2.5 ">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
             <Link to="/" className="flex items-center">
-                <img src="./img/faviconLogoround.png" className="h-6 mr-3 sm:h-9" alt="MDcreations Logo" />
+                <img src={logo} className="h-6 mr-3 sm:h-9" alt="MDcreations Logo" />
                 <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-800">MDcreations</span>
             </Link>
         

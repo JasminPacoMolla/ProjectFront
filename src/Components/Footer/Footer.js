@@ -1,11 +1,13 @@
-import React, {} from "react";
+import React from "react";
+import background from "../../img/footer/footer-bg.svg";
+import logoFooter from "../../img/logo/logo-MDfooter.svg";
 
 function Footer() {
   return (
     <React.Fragment>
       <footer
         className="footer bg-cover bg-no-repeat bg-right-top pt-120 mt-25 md:bg-transparent md:pt-260 lg:pt-260"
-        style={{ backgroundImage: "assets/img/footer/footer-bg.svg" }}
+        style={{ backgroundImage: `url(${background})` }}
       >
         <div className="container">
           <div className="widget-wrapper">
@@ -15,10 +17,7 @@ function Footer() {
                   <div className="logo mb-8">
                     <a href="/">
                       {" "}
-                      <img
-                        src="assets/img/logo/logo-MDfooter.svg"
-                        alt=""
-                      />{" "}
+                      <img src={logoFooter} alt="" />{" "}
                     </a>
                   </div>
                   {/* <p className="mb-8 text-black sm:pr-13 md:pr-0 2xl:pr-25">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed dinonumy eirmod tempor invidunt.</p>  */}
@@ -61,7 +60,7 @@ function Footer() {
 
               <div className="w-full md:w-6/12 lg:w-2/12">
                 <div className="footer-widget mb-10 mx-3">
-                  <h3 className="mb-6 text-black">About Us</h3>
+                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">About Us</h3>
                   <ul className="links">
                     <li>
                       {" "}
@@ -85,7 +84,7 @@ function Footer() {
 
               <div className="w-full md:w-6/12 lg:w-3/12">
                 <div className="footer-widget mb-10 mx-3">
-                  <h3 className="mb-6 text-black">Features</h3>
+                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">Features</h3>
                   <ul className="links">
                     <li>
                       {" "}
@@ -109,7 +108,7 @@ function Footer() {
 
               <div className="w-full md:w-6/12 lg:w-3/12">
                 <div className="footer-widget mb-10 mx-3">
-                  <h3 className="mb-6 text-black">Other Products</h3>
+                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">Other Products</h3>
                   <ul className="links">
                     <li>
                       {" "}

@@ -22,7 +22,13 @@ function Login() {
     event.preventDefault();
     //Aquí mandar la petición al servidor
     const pathApi = await context.login(url,values);
+<<<<<<< HEAD
     if(values.email !="" && values.password !="" && pathApi !== undefined ){
+=======
+
+    console.log(context.userConnected)
+    if(values.email !=="" && values.password !=="" && pathApi !== undefined ){
+>>>>>>> aa840be9a2c69c9b7f220de6211213981eceaae9
       Navigate(pathApi.path);
     }
     else{

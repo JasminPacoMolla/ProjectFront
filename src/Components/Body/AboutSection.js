@@ -1,5 +1,8 @@
 import React, { } from "react";
 import { useState, useEffect } from "react";
+
+
+
 function AboutSection() {
   const img1 = "";
   const img2 = "";
@@ -30,7 +33,7 @@ function AboutSection() {
             <div className="w-full lg:w-1/2">
               <div className="about-content">
                 <div className="section-title mb-8">
-                  <h1 className="mb-6 ">
+                  <h1 className="mb-6 text-3xl text-gray-800 font-bold">
                     Perfect Solution Thriving Online Business
                   </h1>
                   <p className="">
