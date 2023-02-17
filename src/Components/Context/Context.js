@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { getData, postData, putData, deleteData } from "../../biblioteca";
-
+/**Este componente es el contexto de toda la aplicación. */
 const datosContexto = createContext();
 
 var listaInicial = [];
@@ -8,11 +8,10 @@ var objetoInicial = {};
 
 function Context(props) {
   const [userConnected, setUserConnected] = useState(objetoInicial);
-  const [user, setUser] = useState(listaInicial);
+  const [user, setUser] = useState(objetoInicial);
 
   const [users, setUsers] = useState(listaInicial);
   const [loggedIn, setLogin] = useState(false);
-  const [showModal, setShowModal] = useState(props.show);
 
   /***LOGIN******* */
   const login = async (url, object) => {
@@ -20,10 +19,8 @@ function Context(props) {
       const response = await postData(url, object);
       setUserConnected(response.data.user);
       setLogin(true);
-
       return response.data.path;
     } catch (error) {
-      console.log(error);
       return error;
     }
   };
@@ -33,10 +30,8 @@ function Context(props) {
   const signup = async (url, object) => {
     try {
       const response = await postData(url, object);
-      /**I don't know if i have to put login here or not. */
       return response;
     } catch (error) {
-      console.log(error);
       return error;
     }
   };
@@ -46,12 +41,10 @@ function Context(props) {
   const logout = async (url) => {
     try {
       const response = await postData(url);
-      /**I don't know if i have to put login here or not. */
       setUserConnected(objetoInicial);
       setLogin(false);
       return response;
     } catch (error) {
-      console.log(error);
       return error;
     }
   };
@@ -65,7 +58,6 @@ function Context(props) {
       }
       return response;
     } catch (error) {
-      console.log(error);
       return error;
     }
   };
@@ -79,30 +71,31 @@ function Context(props) {
       }
       return response;
     } catch (error) {
-      console.log(error);
       return error;
     }
   };
-
-  const isLoggedIn = (boolean) => {
-    setLogin(boolean);
-  };
-
-  const updateUserState = (object) => {
-    setUser(object);
-  };
-  const updateListState = (list) => {
-    setUsers(list);
-  };
-
+  /**Traer todos los usuarios de la base de datos. */
   const getUsers = async (url) => {
     const usersList = await getData(url);
     setUsers(usersList);
   };
-
+  /**Traer un usuario. */
   const getUser = async (url) => {
     const user = await getData(url);
     setUser(user);
+  };
+
+  /**Cambiar el estado de loggedIn. */
+  const isLoggedIn = (boolean) => {
+    setLogin(boolean);
+  };
+  /**Cambiar el estado de user. */
+  const updateUserState = (object) => {
+    setUser(object);
+  };
+  /**Cambiar el estado de lista de usuarios. */
+  const updateListState = (list) => {
+    setUsers(list);
   };
 
   const data = {
@@ -113,8 +106,6 @@ function Context(props) {
     isLoggedIn,
     loggedIn,
     setLogin,
-    setShowModal,
-    showModal,
     updateListState,
     updateUserState,
     login,

@@ -6,7 +6,8 @@ import Signup from './Sign-up/Signup';
 import UserForm from './Components/Content/Users/UserForm';
 import IndexAdmin from './Components/Admin/IndexAdmin';
 import { IndexClient } from './Components/Content/IndexClient';
-
+import EditUser from './Components/Admin/EditUser';
+/**Este es el componente principal que tiene las routas utilizadas. */
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route path='/IndexAdmin' element={<IndexAdmin/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
+          <Route path='/editUser' element={<EditUser/>}/>
+
         </Routes>
       </Context>
    

@@ -5,10 +5,11 @@ import { useContext } from "react";
 import { datosContexto } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+/**Este componente es un formulario controlado que permite modificar o borra tu propia cuenta. */
 const UserForm = () => {
   const [show, setShow] = useState(false);
   const [showRepeat, setShowRepeat] = useState(false);
+  /**Estado que muestre un mensaje de error. */
   const [error, setError] = useState(false);
 
   var context = useContext(datosContexto);
@@ -26,8 +27,8 @@ const UserForm = () => {
     formState: { errors },
   } = useForm({ mode: "all" });
 
+  /** Función que mande una petición a la API para modificar tu cuenta. */
   const onSubmit = async (data) => {
-    //Hacer aquí la inserción en la base de datos.
     let datos = {
       name: data.name,
       email: data.email,
@@ -51,7 +52,7 @@ const UserForm = () => {
       setError(true);
     }
   };
-
+  /**Función que te permite borrar tu cuenta. */
   const submitDelete = async () => {
     const response = await context.deleteUser(url);
     console.log(response);
@@ -74,33 +75,29 @@ const UserForm = () => {
           email. We only require a valid name, email and password.
         </p>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          {/* <!-- Name and Last Name --> */}
-          
-            {/* <!-- Input First Name --> */}
-            <div className="mb-6" >
-              <label
-                htmlFor="name"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-                placeholder="John"
-                defaultValue={context.userConnected.name}
-                {...register("name", { required: true })}
-                aria-invalid={errors.name ? "true" : "false"}
-              />
-              <div className="error relative flex-col">
-                {errors.name && (
-                  <span role="alert">This field is required </span>
-                )}
-              </div>
+          {/* <!-- Input First Name --> */}
+          <div className="mb-6">
+            <label
+              htmlFor="name"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+              placeholder="John"
+              defaultValue={context.userConnected.name}
+              {...register("name", { required: true })}
+              aria-invalid={errors.name ? "true" : "false"}
+            />
+            <div className="error relative flex-col">
+              {errors.name && <span role="alert">This field is required </span>}
             </div>
-         
+          </div>
+
           {/* <!-- Input email --> */}
           <div className="mb-6">
             <label
@@ -108,7 +105,6 @@ const UserForm = () => {
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Email address{" "}
-              
             </label>
             <input
               type="email"
@@ -235,7 +231,6 @@ const UserForm = () => {
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Select an option
-                
               </label>
               <select
                 id="country"
@@ -253,8 +248,8 @@ const UserForm = () => {
               </select>
               <div className="error relative flex-col"></div>
             </div>
-             {/* <!-- Input rol select --> */}
-             <div>
+            {/* <!-- Input rol select --> */}
+            <div>
               <label
                 htmlFor="user_type"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -272,10 +267,10 @@ const UserForm = () => {
                 className="bg-indigo-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                 {...register("user_type")}
               />
-               <div className="error relative flex-col"></div>
+              <div className="error relative flex-col"></div>
             </div>
           </div>
-           
+
           {/* <!-- Input password --> */}
           <div className="mb-6 relative">
             <label
@@ -474,7 +469,6 @@ const UserForm = () => {
           </a>
         </p>
       </div>
-     
     </React.Fragment>
   );
 };

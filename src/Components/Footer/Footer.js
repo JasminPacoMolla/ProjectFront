@@ -1,7 +1,7 @@
 import React from "react";
 import background from "../../img/footer/footer-bg.svg";
 import logoFooter from "../../img/logo/logo-MDfooter.svg";
-
+/**Este componente es el pie de las páginas. */
 function Footer() {
   return (
     <React.Fragment>
@@ -60,7 +60,9 @@ function Footer() {
 
               <div className="w-full md:w-6/12 lg:w-2/12">
                 <div className="footer-widget mb-10 mx-3">
-                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">About Us</h3>
+                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">
+                    About Us
+                  </h3>
                   <ul className="links">
                     <li>
                       {" "}
@@ -84,7 +86,9 @@ function Footer() {
 
               <div className="w-full md:w-6/12 lg:w-3/12">
                 <div className="footer-widget mb-10 mx-3">
-                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">Features</h3>
+                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">
+                    Features
+                  </h3>
                   <ul className="links">
                     <li>
                       {" "}
@@ -108,7 +112,9 @@ function Footer() {
 
               <div className="w-full md:w-6/12 lg:w-3/12">
                 <div className="footer-widget mb-10 mx-3">
-                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">Other Products</h3>
+                  <h3 className="mb-6 text-gray-800 text-2xl font-bold">
+                    Other Products
+                  </h3>
                   <ul className="links">
                     <li>
                       {" "}

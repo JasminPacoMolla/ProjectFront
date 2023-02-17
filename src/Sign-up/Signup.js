@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { datosContexto } from "../Components/Context/Context";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
+/**Esta componente muestra un formulario para registrarse. */
 function Signup() {
   const [show, setShow] = useState(false);
   const [showRepeat, setShowRepeat] = useState(false);

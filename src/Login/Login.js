@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { datosContexto } from "../Components/Context/Context";
+/**Este componente es un formulario que te permite iniciar sesión. */
 function Login() {
   const url = "http://localhost/api/login";
   const Navigate = useNavigate();
@@ -13,9 +14,9 @@ function Login() {
   });
   var context = useContext(datosContexto);
 
+  /**Función que hace el LOGIN, y según el tipo de usuario te redirige a la zona de cliente o administrador. */
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //Aquí mandar la petición al servidor
     const pathApi = await context.login(url, values);
     if (
       values.email !== "" &&
@@ -27,7 +28,7 @@ function Login() {
       setError(true);
     }
   };
-
+  /** Función que actualize el estado values.*/
   function handleChange(evt) {
     /*
         evt.target es el elemento que ejecuta el evento
